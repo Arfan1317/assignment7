@@ -54,27 +54,27 @@ Make sure you have [Node.js](https://nodejs.org/) installed on your computer.
     Navigate to http://localhost:5173 in your browser.
 
 ### 📂 Project Structure
-keenkeeper/
-├── public/
-│   ├── friends.json         # Mock database of friend profiles
-│   ├── friendspic/          # Profile images
-│   └── _redirects           # Netlify SPA routing configuration
-├── src/
-│   ├── assets/              # SVG/PNG Icons (Call, Text, Video)
-│   ├── components/          # Reusable UI (Navbar, Footer)
-│   ├── context/             # AppContext.jsx (Global State)
-│   ├── layouts/             # MainLayout.jsx (Router Outlet wrapper)
-│   ├── pages/               # Page Components
-│   │   ├── Home.jsx         # Dashboard & Grid
-│   │   ├── FriendDetails.jsx# Individual profiles & Quick Check-in
-│   │   ├── Timeline.jsx     # Filterable history log
-│   │   ├── Stats.jsx        # Recharts Analytics
-│   │   └── NotFound.jsx     # Custom 404 Error Page
-│   ├── App.jsx              # Routing setup
-│   └── main.jsx             # React entry point
-├── index.html
-├── tailwind.config.js       # Tailwind theme configuration
-└── package.json
+keenkeeper/<br>
+├── public/<br>
+│   ├── friends.json         # Mock database of friend profiles<br>
+│   ├── friendspic/          # Profile images<br>
+│   └── _redirects           # Netlify SPA routing configuration<br>
+├── src/<br>
+│   ├── assets/              # SVG/PNG Icons (Call, Text, Video)<br>
+│   ├── components/          # Reusable UI (Navbar, Footer)<br>
+│   ├── context/             # AppContext.jsx (Global State)<br>
+│   ├── layouts/             # MainLayout.jsx (Router Outlet wrapper)<br>
+│   ├── pages/               # Page Components<br>
+│   │   ├── Home.jsx         # Dashboard & Grid<br>
+│   │   ├── FriendDetails.jsx# Individual profiles & Quick Check-in<br>
+│   │   ├── Timeline.jsx     # Filterable history log<br>
+│   │   ├── Stats.jsx        # Recharts Analytics<br>
+│   │   └── NotFound.jsx     # Custom 404 Error Page<br>
+│   ├── App.jsx              # Routing setup<br>
+│   └── main.jsx             # React entry point<br>
+├── index.html<br>
+├── tailwind.config.js       # Tailwind theme configuration<br>
+└── package.json<br>
 
 ### 🌐 Deployment Notes
 
