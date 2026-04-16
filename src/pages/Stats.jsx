@@ -16,18 +16,15 @@ export default function Stats() {
     { name: "Video", value: videoCount, color: "#22C55E" } 
   ];
 
-  
   const activeData = data.filter((item) => item.value > 0);
 
   return (
     <div className="max-w-[1110px] mx-auto px-4 sm:px-6 py-12">
       <h1 className="text-4xl font-bold text-[#1e293b] mb-8">Friendship Analytics</h1>
 
-      
       <div className="bg-white border border-gray-100 rounded-xl p-8 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.05)] h-[450px] flex flex-col">
         <h3 className="text-[15px] font-semibold text-[#2A5C43] mb-6">By Interaction Type</h3>
         
-       
         {activeData.length === 0 ? (
           <div className="flex-grow flex items-center justify-center text-[#64748b]">
             Your chart is empty! Go to a friend's profile and log some check-ins to see your stats.
@@ -56,7 +53,6 @@ export default function Stats() {
                 <Tooltip 
                   contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
                 />
-                
                 
                 <Legend 
                   verticalAlign="bottom" 
