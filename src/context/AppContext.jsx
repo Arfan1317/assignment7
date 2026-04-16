@@ -4,14 +4,19 @@ import { toast } from "react-toastify";
 export const AppContext = createContext();
 
 export function AppProvider({ children }) {
+  
   const [timeline, setTimeline] = useState([]);
 
   const addInteraction = (type, friendName) => {
+   
+    const dateOptions = { month: 'long', day: 'numeric', year: 'numeric' };
+    const formattedDate = new Date().toLocaleDateString('en-US', dateOptions);
+
     const newInteraction = {
-      id: Date.now(), 
-      type: type,    
+      id: Date.now(),
+      type: type,     
       friendName: friendName,
-      date: new Date().toLocaleString(),
+      date: formattedDate,
     };
     
     setTimeline([newInteraction, ...timeline]);
