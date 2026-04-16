@@ -1,23 +1,23 @@
 import { useState, useEffect, useContext } from "react";
-import { useParams } from "react-router"; 
-import { AppContext } from "../context/AppContext"; // Import the Context
+import { useParams, Link } from "react-router"; 
+import { AppContext } from "../context/AppContext"; 
 import callIcon from "../assets/call.png";
 import textIcon from "../assets/text.png";
 import videoIcon from "../assets/video.png";
 
 export default function FriendDetails() {
-  const { id } = useParams(); // Gets the ID from the URL
+  const { id } = useParams(); 
   const [friend, setFriend] = useState(null);
   const [loading, setLoading] = useState(true);
   
-  // Bring in the addInteraction function from our Context API
+ 
   const { addInteraction } = useContext(AppContext);
 
   useEffect(() => {
     fetch("/friends.json")
       .then((response) => response.json())
       .then((data) => {
-        // Find the specific friend whose ID matches the URL
+     
         const foundFriend = data.find((f) => f.id === parseInt(id));
         setFriend(foundFriend);
         setLoading(false);
@@ -33,25 +33,23 @@ export default function FriendDetails() {
     );
   }
 
-  // If URL has a fake ID, show error
+ 
   if (!friend) {
     return <div className="text-center text-red-500 py-12 text-xl font-bold">Friend not found!</div>;
   }
 
   return (
     <div className="max-w-[1110px] mx-auto px-4 sm:px-6 py-8">
-      {/* 2-Column Grid Layout */}
+    
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
-        
-        {/* ================= LEFT COLUMN (Profile & Actions) ================= */}
+       
         <div className="lg:col-span-4 space-y-4">
-          
-          {/* Profile Card */}
-          <div className="bg-white rounded-xl p-8 flex flex-col items-center text-center shadow-[0_2px_10px_-3px_rgba(6,81,237,0.05)] border border-gray-100">
+        
+          <div className="bg-white rounded-xl p-8 flex flex-col items-center text-center shadow-[0_2px_10px_-3px_rgba(6,81,237,0.05)] border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
             <img
               src={friend.picture}
               alt={friend.name}
-              className="w-24 h-24 rounded-full object-cover mb-4"
+              className="w-24 h-24 rounded-full object-cover mb-4 group-hover:scale-105 transition-transform duration-300"
             />
             <h2 className="text-[22px] font-bold text-[#1e293b] mb-2">{friend.name}</h2>
             
@@ -70,7 +68,6 @@ export default function FriendDetails() {
             <p className="text-[#94a3b8] text-[12px]">Preferred: email</p>
           </div>
 
-          {/* Action Buttons */}
           <div className="flex flex-col gap-3">
             <button className="w-full bg-white border border-gray-200 rounded-lg py-3 text-[14px] font-semibold text-[#1e293b] hover:bg-gray-50 transition-colors flex items-center justify-center gap-2">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
@@ -87,27 +84,25 @@ export default function FriendDetails() {
           </div>
         </div>
 
-        {/* ================= RIGHT COLUMN (Stats & Checks) ================= */}
         <div className="lg:col-span-8 space-y-6">
           
           {/* Top 3 Stat Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="bg-white rounded-xl p-6 text-center shadow-[0_2px_10px_-3px_rgba(6,81,237,0.05)] border border-gray-100">
-              <h3 className="text-[32px] font-bold text-[#2A5C43] mb-1">{friend.days_since_contact}</h3>
+            <div className="bg-white rounded-xl p-6 text-center shadow-[0_2px_10px_-3px_rgba(6,81,237,0.05)] border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-default group">
+              <h3 className="text-[32px] font-bold text-[#2A5C43] mb-1 group-hover:scale-105 transition-transform duration-300">{friend.days_since_contact}</h3>
               <p className="text-[13px] text-[#64748b]">Days Since Contact</p>
             </div>
-            <div className="bg-white rounded-xl p-6 text-center shadow-[0_2px_10px_-3px_rgba(6,81,237,0.05)] border border-gray-100">
-              <h3 className="text-[32px] font-bold text-[#2A5C43] mb-1">{friend.goal}</h3>
+            <div className="bg-white rounded-xl p-6 text-center shadow-[0_2px_10px_-3px_rgba(6,81,237,0.05)] border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-default group">
+              <h3 className="text-[32px] font-bold text-[#2A5C43] mb-1 group-hover:scale-105 transition-transform duration-300">{friend.goal}</h3>
               <p className="text-[13px] text-[#64748b]">Goal (Days)</p>
             </div>
-            <div className="bg-white rounded-xl p-6 text-center shadow-[0_2px_10px_-3px_rgba(6,81,237,0.05)] border border-gray-100">
-              <h3 className="text-[28px] font-bold text-[#2A5C43] mb-1">{friend.next_due_date}</h3>
+            <div className="bg-white rounded-xl p-6 text-center shadow-[0_2px_10px_-3px_rgba(6,81,237,0.05)] border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-default group">
+              <h3 className="text-[28px] font-bold text-[#2A5C43] mb-1 group-hover:scale-105 transition-transform duration-300">{friend.next_due_date}</h3>
               <p className="text-[13px] text-[#64748b]">Next Due</p>
             </div>
           </div>
 
-          {/* Relationship Goal Card */}
-          <div className="bg-white rounded-xl p-6 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.05)] border border-gray-100 flex items-center justify-between">
+          <div className="bg-white rounded-xl p-6 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.05)] border border-gray-100 flex items-center justify-between hover:shadow-lg transition-all duration-300">
             <div>
               <h3 className="text-[16px] font-bold text-[#2A5C43] mb-1">Relationship Goal</h3>
               <p className="text-[#64748b] text-[14px]">Connect every <span className="font-bold text-[#1e293b]">{friend.goal} days</span></p>
@@ -117,16 +112,15 @@ export default function FriendDetails() {
             </button>
           </div>
 
-          {/* Quick Check-In Card */}
-          <div className="bg-white rounded-xl p-6 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.05)] border border-gray-100">
+          <div className="bg-white rounded-xl p-6 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.05)] border border-gray-100 hover:shadow-lg transition-all duration-300">
             <h3 className="text-[16px] font-bold text-[#2A5C43] mb-4">Quick Check-In</h3>
-            
+          
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               
               {/* Call Button */}
               <button 
                 onClick={() => addInteraction("Call", friend.name)}
-                className="bg-gray-50 hover:bg-gray-100 border border-gray-100 rounded-xl py-6 flex flex-col items-center justify-center gap-3 transition-colors group"
+                className="bg-gray-50 hover:bg-gray-100 border border-gray-100 rounded-xl py-6 flex flex-col items-center justify-center gap-3 transition-colors group h-[120px]"
               >
                 <img src={callIcon} alt="Call" className="w-8 h-8 opacity-80 group-hover:opacity-100 transition-opacity" />
                 <span className="text-[#1e293b] font-medium text-[15px]">Call</span>
@@ -135,7 +129,7 @@ export default function FriendDetails() {
               {/* Text Button */}
               <button 
                 onClick={() => addInteraction("Text", friend.name)}
-                className="bg-gray-50 hover:bg-gray-100 border border-gray-100 rounded-xl py-6 flex flex-col items-center justify-center gap-3 transition-colors group"
+                className="bg-gray-50 hover:bg-gray-100 border border-gray-100 rounded-xl py-6 flex flex-col items-center justify-center gap-3 transition-colors group h-[120px]"
               >
                 <img src={textIcon} alt="Text" className="w-8 h-8 opacity-80 group-hover:opacity-100 transition-opacity" />
                 <span className="text-[#1e293b] font-medium text-[15px]">Text</span>
@@ -144,7 +138,7 @@ export default function FriendDetails() {
               {/* Video Button */}
               <button 
                 onClick={() => addInteraction("Video", friend.name)}
-                className="bg-gray-50 hover:bg-gray-100 border border-gray-100 rounded-xl py-6 flex flex-col items-center justify-center gap-3 transition-colors group"
+                className="bg-gray-50 hover:bg-gray-100 border border-gray-100 rounded-xl py-6 flex flex-col items-center justify-center gap-3 transition-colors group h-[120px]"
               >
                 <img src={videoIcon} alt="Video" className="w-8 h-8 opacity-80 group-hover:opacity-100 transition-opacity" />
                 <span className="text-[#1e293b] font-medium text-[15px]">Video</span>
