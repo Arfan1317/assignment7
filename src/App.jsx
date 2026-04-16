@@ -8,28 +8,15 @@ import NotFound from "./pages/NotFound";
 
 export default function App() {
   return (
-   
     <BrowserRouter>
       <Routes>
-        
-        
         <Route element={<MainLayout />}>
-          
-          
           <Route path="/" element={<Home />} />
-          
-         
           <Route path="/friend/:id" element={<FriendDetails />} />
-          
-         
           <Route path="/timeline" element={<Timeline />} />
           <Route path="/stats" element={<Stats />} />
-          
         </Route>
-
-      
         <Route path="*" element={<NotFound />} />
-
       </Routes>
     </BrowserRouter>
   );
